@@ -10,8 +10,6 @@ const getTestResults = require('./getTestResults');
 
 class StandardReporter {
   constructor(globalConfig) {
-    globalConfig = globalConfig || {};
-
     this.globalConfig = globalConfig;
     this.stdlib = new Stdlib(globalConfig);
 
@@ -77,7 +75,7 @@ class StandardReporter {
         testResult.snapshot,
         didUpdate
       );
-      snapshotStatuses.forEach(this.stdlib.log);
+      snapshotStatuses.forEach(this.stdlib.log.bind(this.stdlib));
     }
     this.stdlib.forceFlushBufferedOutput();
   }
