@@ -10,6 +10,8 @@ const getTestResults = require('./getTestResults');
 
 class StandardReporter {
   constructor(globalConfig) {
+    globalConfig = globalConfig || {};
+
     this.globalConfig = globalConfig;
     this.stdlib = new Stdlib(globalConfig);
 
